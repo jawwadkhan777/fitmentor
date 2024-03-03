@@ -26,7 +26,7 @@ const WorkoutDetails = () => {
           <span><b>EQUIPMENT --</b> {exerciseDetails.equipment}</span>
           <span><b>TARGET --</b> {exerciseDetails.target}</span>
           <span><b>SECONDARY MUSCLES:</b> {exerciseDetails.secondaryMuscles}</span>
-          <span><b>INSTRUCTIONS:</b>{exerciseDetails.instructions}</span>
+          <span><b>INSTRUCTIONS:</b> {exerciseDetails.instructions}</span>
         </div>
       </div>
       <div className="right">
