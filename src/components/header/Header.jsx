@@ -7,7 +7,7 @@ const pages = [
   { label: "HOME", to: "/" },
   { label: "ABOUT", to: "/about" },
   { label: "WORKOUTS", to: "/workouts" },
-  { label: "BLOGS", to: "/blogs" },
+  // { label: "BLOGS", to: "/blogs" },
   // { label: "CONTACT", to: "/contact" },
 ];
 const Header = () => {
