@@ -2,8 +2,8 @@ import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../features/exercisesSlice";
 import SearchExercises from "../../components/searchExercises/SearchExercises";
-import { useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
+import { useEffect } from "react";
+// import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 
 const Workouts = () => {
