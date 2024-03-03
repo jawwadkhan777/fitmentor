@@ -25,14 +25,8 @@ const WorkoutDetails = () => {
           <span><b>BODY PART --</b> {exerciseDetails.bodyPart}</span>
           <span><b>EQUIPMENT --</b> {exerciseDetails.equipment}</span>
           <span><b>TARGET --</b> {exerciseDetails.target}</span>
-          <span><b>SECONDARY MUSCLES:</b> {exerciseDetails.secondaryMuscles.map((muscles)=> (
-            <li>{muscles}</li>
-          ))}</span>
-          <span><b>INSTRUCTIONS:</b>{exerciseDetails.instructions.map((instructions)=> (
-            <li>
-              {instructions}
-            </li>
-          ))}</span>
+          <span><b>SECONDARY MUSCLES:</b> {exerciseDetails.secondaryMuscles}</span>
+          <span><b>INSTRUCTIONS:</b>{exerciseDetails.instructions}</span>
         </div>
       </div>
       <div className="right">

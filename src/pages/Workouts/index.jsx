@@ -21,6 +21,16 @@ const Workouts = () => {
     dispatch(fetchData(text));
   }, [dispatch]);
 
+  //   let renderExercises = data.Response === "True" ? (data.exercisesData.map(({exercisesData}, index)=>(<div className="exercise-card-menu" key={index}>
+  //   <img src={data.gifUrl} alt="loading..." />
+  //   <div>
+  //     <li>Name: {exercisesData.name}</li>
+  //     <li>Traget: {exercisesData.target}</li>
+  //     <li>Equipment: {exercisesData.equipment}</li>
+  //     <li>BodyPart: {exercisesData.bodyPart}</li>
+  //   </div>
+  // </div>))) : (<div><h1>data.error</h1></div>)
+
   console.log(exercisesData);
 
   // useEffect(()=> {
@@ -48,6 +58,7 @@ const Workouts = () => {
       <div className="exercise-card">
         {exercisesData.map((data, index) => (
           <Link to={`/workouts/${data.id}`} className="link">
+            {/* {renderExercises} */}
             <div className="exercise-card-menu" key={index}>
               <img src={data.gifUrl} alt="loading..." />
               <div>
