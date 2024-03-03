@@ -1,0 +1,59 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_left {
+    display: flex;
+    flex: 3;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.header_left>img {
+    width: 10rem;
+    height: 3rem;
+}
+
+.header_left_menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.pages {
+    color: white;
+    text-decoration: none;
+}
+
+.pages:hover {
+    color: var(--orange);
+}
+
+
+.header_right {
+    flex: 1;
+    /* background: var(--orange); */
+}
+
+.header_right>.btn {
+    position: absolute;
+    right: 3rem;
+    top: 2rem;
+    background: var(--orange);
+
+    >.navLink {
+        text-decoration: none;
+        color: white;
+
+    }
+}
+
+.header_right>.btn:hover {
+    background: white;
+    >.navLink {
+        color: var(--orange);
+    }
+}

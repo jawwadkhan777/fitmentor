@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+}
+
+.left{ 
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 3;
+}
+
+.name {
+    color: var(--orange);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+}

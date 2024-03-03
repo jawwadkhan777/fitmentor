@@ -1,0 +1,30 @@
+.about {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+    color: white;
+}
+
+.main-heading {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--orange);
+}
+
+.sub-heading {
+    text-transform: uppercase;
+}
+
+.paragraph {
+    line-height: 1.5;
+}
+
+.gap {
+    /* padding: 0rem 2rem; */
+    text-align: center;
+}
+
+.decoration {
+    border: 1px solid var(--orange);
+    margin: 1rem 0rem;
+}
