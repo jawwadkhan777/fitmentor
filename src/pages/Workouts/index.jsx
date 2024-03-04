@@ -1,10 +1,8 @@
 import "./index.css";
 import SearchExercises from "../../components/searchExercises/SearchExercises";
 // import ReactPaginate from "react-paginate";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchDataDetails } from "../../features/exercisesSlice";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Workouts = () => {
   // const [pageCount, setPageCount] = useState(0);
@@ -24,12 +22,6 @@ const Workouts = () => {
   //   </div>
   // </div>))) : (<div><h1>data.error</h1></div>)
 
-  const { id } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchDataDetails(id));
-  }, [dispatch, id]);
 
 
   // useEffect(()=> {

@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchDataDetails } from "../../features/exercisesSlice";
 
 const WorkoutDetails = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
   const { exerciseDetails } = useSelector(({ app }) => {
     return app;
   });
-
+  
+  useEffect(() => {
+      dispatch(fetchDataDetails(id));
+    }, [dispatch, id]);
+    
   console.log(exerciseDetails);
 
   return (
@@ -17,12 +25,8 @@ const WorkoutDetails = () => {
           <span><b>BODY PART --</b> {exerciseDetails.bodyPart}</span>
           <span><b>EQUIPMENT --</b> {exerciseDetails.equipment}</span>
           <span><b>TARGET --</b> {exerciseDetails.target}</span>
-          <span className="list"><b>SECONDARY MUSCLES:</b> {exerciseDetails.secondaryMuscles.map((secMuscles)=> (
-            <li>{secMuscles}</li>
-          ))}</span>
-          <span className="list"><b>INSTRUCTIONS:</b> {exerciseDetails.instructions.map((instruction)=> (
-            <li>{instruction}</li>
-          ))}</span>
+          {/* <span><b>SECONDARY MUSCLES:</b> {exerciseDetails.secondaryMuscles}</span> */}
+          <span><b>INSTRUCTIONS:</b> {exerciseDetails.instructions}</span>
         </div>
       </div>
       <div className="right">
