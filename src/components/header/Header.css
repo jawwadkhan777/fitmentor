@@ -35,14 +35,14 @@
 
 .header_right {
     flex: 1;
-    /* background: var(--orange); */
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
 }
 
 .header_right>.btn {
-    position: absolute;
-    right: 3rem;
-    top: 2rem;
     background: var(--orange);
+    margin-right: 2rem;
 
     >.navLink {
         text-decoration: none;
@@ -55,5 +55,93 @@
     background: white;
     >.navLink {
         color: var(--orange);
+    }
+}
+
+
+@media only screen and (max-width: 950px) {
+    
+    .header_left {
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        border-bottom: 2px solid white;
+        border-right: 2px solid white;
+    }
+    
+    .header_left>img {
+        width: 8rem;
+        height: 2.5rem;
+    }
+    
+    .header_left_menu {
+        gap: 1.5rem;
+    }
+    
+    .pages {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+@media only screen and (max-width: 700px) {
+    
+    .header_left {
+        /* padding: 0.7rem 1.2rem; */
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+    }
+    
+    .header_left>img {
+        width: 6.5rem;
+        height: 2.5rem;
+    }
+    
+    .header_left_menu {
+        gap: 1rem;
+    }
+    
+    .pages {
+        font-size: 0.8rem;
+    }
+
+    .header_right>.btn {
+        font-weight: 100;
+        font-size: 0.7rem;
+        margin-left: 1rem;
+        padding: 0.4rem 0.9rem;
+    }
+}
+
+
+
+@media only screen and (max-width: 500px) {
+    
+    .header_left {
+        flex-direction: column;
+        padding: 0.7rem 1.2rem;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        align-items: center;
+    }
+    
+    .header_left>img {
+        width: 7rem;
+        height: 2.5rem;
+    }
+    
+    .header_left_menu {
+        gap: 1rem;
+    }
+    
+    .pages {
+        font-size: 0.8rem;
+    }
+
+    .header_right>.btn {
+        font-weight: 100;
+        font-size: 0.7rem;
+        margin-left: 1rem;
+        padding: 0.4rem 0.9rem;
     }
 }

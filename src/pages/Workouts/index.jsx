@@ -11,16 +11,17 @@ const Workouts = () => {
   // const [items, setItems] = useState([]);
 
   const dispatch = useDispatch();
-  const { exercisesData } = useSelector(({ app }) => {
-    return app;
-  });
-
+  
   const text = "back";
-
+  
   useEffect(() => {
     dispatch(fetchData(text));
   }, [dispatch]);
-
+  
+  const { exercisesData } = useSelector(({ app }) => {
+    return app;
+  });
+  console.log(exercisesData);
   //   let renderExercises = data.Response === "True" ? (data.exercisesData.map(({exercisesData}, index)=>(<div className="exercise-card-menu" key={index}>
   //   <img src={data.gifUrl} alt="loading..." />
   //   <div>
@@ -31,7 +32,6 @@ const Workouts = () => {
   //   </div>
   // </div>))) : (<div><h1>data.error</h1></div>)
 
-  console.log(exercisesData);
 
   // useEffect(()=> {
   //   setItems(exercisesData)
