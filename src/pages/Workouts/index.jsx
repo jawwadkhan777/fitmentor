@@ -1,22 +1,14 @@
 import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../features/exercisesSlice";
 import SearchExercises from "../../components/searchExercises/SearchExercises";
-import { useEffect } from "react";
 // import ReactPaginate from "react-paginate";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchDataDetails } from "../../features/exercisesSlice";
 
 const Workouts = () => {
   // const [pageCount, setPageCount] = useState(0);
   // const [items, setItems] = useState([]);
-
-  const dispatch = useDispatch();
-  
-  const text = "back";
-  
-  useEffect(() => {
-    dispatch(fetchData(text));
-  }, [dispatch]);
   
   const { exercisesData } = useSelector(({ app }) => {
     return app;
@@ -31,6 +23,13 @@ const Workouts = () => {
   //     <li>BodyPart: {exercisesData.bodyPart}</li>
   //   </div>
   // </div>))) : (<div><h1>data.error</h1></div>)
+
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDataDetails(id));
+  }, [dispatch, id]);
 
 
   // useEffect(()=> {

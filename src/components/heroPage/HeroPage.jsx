@@ -5,14 +5,19 @@ import hero_image from "../../assets/hero_image.png";
 import hero_image_back from "../../assets/hero_image_back.png";
 import calories from "../../assets/calories.png";
 import { Link } from "react-router-dom";
+import {motion} from 'framer-motion'
 
 const HeroPage = () => {
+  const transition = {type: 'spring', duration: 3}
   return (
     <div className="hero">
       <div className="blur hero-blur"></div>
       <div className="hero_left">
         <div className="ad">
-          <div></div>
+          <motion.div
+          initial={{left:'500px'}}
+          whileInView={{left:'8px'}}
+          transition={{...transition, type: "tween"}}></motion.div>
           <span className="ad_text">
             Unleash the Power of FitMentor and Transform Your Fitness
           </span>

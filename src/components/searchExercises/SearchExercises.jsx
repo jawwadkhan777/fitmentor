@@ -7,7 +7,7 @@ import { fetchData } from "../../features/exercisesSlice";
 const SearchExercises = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
-  const searchHandle = (e) => {
+  const searchHandle = () => {
     dispatch(fetchData(searchTerm))
     // console.log(searchTerm);
   };
