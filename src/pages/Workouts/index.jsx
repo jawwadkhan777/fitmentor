@@ -4,29 +4,38 @@ import SearchExercises from "../../components/searchExercises/SearchExercises";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchData, options } from "../../features/exercisesSlice";
+import { fetchData } from "../../features/exercisesSlice";
 import ReactPaginate from "react-paginate";
 
 const Workouts = () => {
+  const [part, setPart] = useState("shoulders");
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10; // Number of items to display per page
-  
+
   const dispatch = useDispatch();
-  
-  const text = "shoulders";
-  
+
+  // const text = "shoulders";
+
   useEffect(() => {
-    dispatch(fetchData(text, currentPage+1));
-  }, [dispatch, currentPage]);
-  
+    dispatch(fetchData(part, currentPage + 1));
+  }, [dispatch, currentPage, part]);
+
   const { exercisesData } = useSelector(({ app }) => {
     return app;
   });
-  
+
   // Check if exerciseDetails is not empty
   if (!exercisesData || exercisesData.length === 0) {
     return (
-      <div style={{ color: "white", fontSize: "2rem", fontWeight: "bold", margin: "10rem", textAlign: "center" }}>
+      <div
+        style={{
+          color: "white",
+          fontSize: "2rem",
+          fontWeight: "bold",
+          margin: "10rem",
+          textAlign: "center",
+        }}
+      >
         Loading..., Please wait!!!
       </div>
     );
@@ -36,7 +45,10 @@ const Workouts = () => {
 
   const pageCount = Math.ceil(exercisesData.length / itemsPerPage);
 
-  const displayData = exercisesData.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+  const displayData = exercisesData.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
 
   //   let renderExercises = data.Response === "True" ? (data.exercisesData.map(({exercisesData}, index)=>(<div className="exercise-card-menu" key={index}>
   //   <img src={data.gifUrl} alt="loading..." />
@@ -48,11 +60,11 @@ const Workouts = () => {
   //   </div>
   // </div>))) : (<div><h1>data.error</h1></div>)
 
-  const pageClickhandler = ({ selected }) => setCurrentPage(selected)
+  const pageClickhandler = ({ selected }) => setCurrentPage(selected);
 
   return (
     <div className="exercise">
-      <SearchExercises />
+      <SearchExercises setPart={setPart} part={part}/>
       <div className="exercise-card">
         {displayData.map((data, index) => (
           <Link to={`/workouts/${data.id}`} className="link">

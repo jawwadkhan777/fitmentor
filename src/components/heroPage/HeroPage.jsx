@@ -46,14 +46,15 @@ const HeroPage = () => {
             <span>Members Joined</span>
           </div>
           <div>
-            <span>+50</span>
-            <span>Fitness Programs</span>
+            <span>+100</span>
+            <span>Fitness Exercises</span>
           </div>
         </div>
 
         {/* hero buttons */}
         <div className="hero_buttons">
-          <button className="btn">Get Started</button>
+          <button className="btn">
+            <Link to="/workouts" className="link">Get Started</Link></button>
           <button className="btn">
             <Link to="/about" className="link">Learn More</Link></button>
         </div>

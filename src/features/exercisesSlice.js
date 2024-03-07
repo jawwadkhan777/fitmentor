@@ -6,9 +6,9 @@ export const options = {
   // params: {limit: '10'},
   headers: {
     // 'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-    'X-RapidAPI-Key': '9dcd382b79msh891eb3ef683a4adp136186jsn6827e2ec7b5b',
+    // 'X-RapidAPI-Key': '9dcd382b79msh891eb3ef683a4adp136186jsn6827e2ec7b5b',
 
-    // 'X-RapidAPI-Key': 'ec7c6a3745msh9adb57eb58594e3p1c6fb9jsn29e89c5478d3',
+    'X-RapidAPI-Key': 'ec7c6a3745msh9adb57eb58594e3p1c6fb9jsn29e89c5478d3',
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
   }
 };

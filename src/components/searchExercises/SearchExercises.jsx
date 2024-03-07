@@ -4,12 +4,13 @@ import { MdSearch } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { fetchData } from "../../features/exercisesSlice";
 
-const SearchExercises = () => {
+const SearchExercises = ({setPart}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
 
   const searchHandle = () => {
     dispatch(fetchData(searchTerm));
+    setPart(searchTerm)
     // console.log(searchTerm);
   };
 
