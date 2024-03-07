@@ -2,6 +2,7 @@
     display: flex;
     padding: 2rem;
     justify-content: space-between;
+    gap: 2rem;
 }
 
 .left{ 
@@ -29,8 +30,19 @@
 .right {
     flex: 1;
     display: flex;
+    >img {
+        border-radius: 0.5rem;
+    }
 }
 
 .list {
     list-style:disc;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 }

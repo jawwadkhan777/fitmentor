@@ -7,8 +7,9 @@ import { fetchData } from "../../features/exercisesSlice";
 const SearchExercises = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
+
   const searchHandle = () => {
-    dispatch(fetchData(searchTerm))
+    dispatch(fetchData(searchTerm));
     // console.log(searchTerm);
   };
 
@@ -29,6 +30,12 @@ const SearchExercises = () => {
         style={{ color: "var(--orange)", cursor: "pointer" }}
         onClick={searchHandle}
       />
+      {/* {error && <div className="error-message">Invalid body part. Please try again.</div>}
+      {exercisesData.length === 0 && !error && (
+        <div className="no-results-message">No results found for '{searchTerm}'</div>
+      )} */}
+
+      
     </div>
   );
 };

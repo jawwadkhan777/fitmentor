@@ -2,16 +2,42 @@ import "./index.css";
 import SearchExercises from "../../components/searchExercises/SearchExercises";
 // import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { fetchData, options } from "../../features/exercisesSlice";
+import ReactPaginate from "react-paginate";
 
 const Workouts = () => {
-  // const [pageCount, setPageCount] = useState(0);
-  // const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10; // Number of items to display per page
+  
+  const dispatch = useDispatch();
+  
+  const text = "shoulders";
+  
+  useEffect(() => {
+    dispatch(fetchData(text, currentPage+1));
+  }, [dispatch, currentPage]);
   
   const { exercisesData } = useSelector(({ app }) => {
     return app;
   });
+  
+  // Check if exerciseDetails is not empty
+  if (!exercisesData || exercisesData.length === 0) {
+    return (
+      <div style={{ color: "white", fontSize: "2rem", fontWeight: "bold", margin: "10rem", textAlign: "center" }}>
+        Loading..., Please wait!!!
+      </div>
+    );
+  }
+
   console.log(exercisesData);
+
+  const pageCount = Math.ceil(exercisesData.length / itemsPerPage);
+
+  const displayData = exercisesData.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+
   //   let renderExercises = data.Response === "True" ? (data.exercisesData.map(({exercisesData}, index)=>(<div className="exercise-card-menu" key={index}>
   //   <img src={data.gifUrl} alt="loading..." />
   //   <div>
@@ -22,32 +48,13 @@ const Workouts = () => {
   //   </div>
   // </div>))) : (<div><h1>data.error</h1></div>)
 
-
-
-  // useEffect(()=> {
-  //   setItems(exercisesData)
-
-  // }, [exercisesData])
-
-  // // console.log(items);
-
-  // const fetchPageData = (currentPage)=> {
-  //   dispatch(fetchData(text, currentPage))
-  // }
-
-  // const pageClickhandler = ({ selected }) => {
-  //   console.log(selected+1);
-  //   const currentPage = selected+1;
-  //   // const responseFromAPI = dispatch(fetchData(currentPage))
-  //   const responseFromAPI = fetchPageData(currentPage)
-  //   setItems(responseFromAPI)
-  // };
+  const pageClickhandler = ({ selected }) => setCurrentPage(selected)
 
   return (
     <div className="exercise">
       <SearchExercises />
       <div className="exercise-card">
-        {exercisesData.map((data, index) => (
+        {displayData.map((data, index) => (
           <Link to={`/workouts/${data.id}`} className="link">
             {/* {renderExercises} */}
             <div className="exercise-card-menu" key={index}>
@@ -62,14 +69,16 @@ const Workouts = () => {
           </Link>
         ))}
       </div>
-      {/* <ReactPaginate
+
+      <ReactPaginate
         previousLabel={"previous"}
         nextLabel={"next"}
         breakLabel={"..."}
-        pageCount={20}
+        pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
-        // onPageChange={pageClickhandler}
+        onPageChange={pageClickhandler}
+        className="pagination"
         // containerClassName={"pagination justify-content-center"}
         // pageClassName={"page-item"}
         // pageLinkClassName={"page-link"}
@@ -80,7 +89,7 @@ const Workouts = () => {
         // breakClassName={"page-item"}
         // breakLinkClassName={"page-link"}
         // activeClassName={"active"}
-      /> */}
+      />
     </div>
   );
 };

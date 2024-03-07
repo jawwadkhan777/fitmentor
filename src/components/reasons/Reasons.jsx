@@ -26,7 +26,7 @@ const Reasons = () => {
         <div className="points">
           <div>
             <img src={tick} alt="loading..." />
-            <span>Over 50+ exercises</span>
+            <span>Over 100+ exercises</span>
           </div>
           <div>
             <img src={tick} alt="loading..." />

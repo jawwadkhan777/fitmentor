@@ -9,13 +9,14 @@ import {motion} from 'framer-motion'
 
 const HeroPage = () => {
   const transition = {type: 'spring', duration: 3}
+  const mobileScreen = window.innerWidth<=768? true:false; 
   return (
     <div className="hero">
       <div className="blur hero-blur"></div>
       <div className="hero_left">
         <div className="ad">
           <motion.div
-          initial={{left:'500px'}}
+          initial={{left:mobileScreen? '220px':'500px'}}
           whileInView={{left:'8px'}}
           transition={{...transition, type: "tween"}}></motion.div>
           <span className="ad_text">

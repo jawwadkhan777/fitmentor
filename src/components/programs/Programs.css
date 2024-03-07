@@ -66,3 +66,21 @@
     cursor: grab;
     background: var(--planCard);
 }
+
+
+@media only screen and (max-width: 768px) {
+    .programs_header {
+        flex-direction: column;
+        align-items: center;
+        font-size: x-large;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .programs_categories {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2rem;
+    }
+}

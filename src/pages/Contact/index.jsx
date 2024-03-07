@@ -57,12 +57,12 @@ const Contact = () => {
               <label htmlFor="comment">Leave Your Message</label>
               <textarea
                 name="message"
-                id="messafe"
+                id="message"
                 autoComplete="off"
                 placeholder="message"
                 cols="30"
                 rows="10"
-                value={values.comment}
+                value={values.message}
                 onChange={handleChange}
               />
             </div>
@@ -70,7 +70,7 @@ const Contact = () => {
           </div>
           <div className="contact_submission">
             <p>Thanks for your contact!</p>
-            <button type="submit">Submit</button>
+            <button type="submit">Send</button>
           </div>
         </form>
       </div>
