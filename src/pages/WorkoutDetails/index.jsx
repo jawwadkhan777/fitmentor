@@ -26,7 +26,7 @@ const WorkoutDetails = () => {
     return <div style={{color: "white", fontSize:" 2rem", fontWeight: "bold", margin: "10rem", textAlign: "center"}}>Loading..., Please wait!!!</div>;
   }
   
-  console.log(exerciseDetails);
+  // console.log(exerciseDetails);
   
   return (
     <div className="container">

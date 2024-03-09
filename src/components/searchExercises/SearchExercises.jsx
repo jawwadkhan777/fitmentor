@@ -1,17 +1,34 @@
 import React, { useState } from "react";
 import "./SearchExercises.css";
 import { MdSearch } from "react-icons/md";
-import { useDispatch } from "react-redux";
-import { fetchData } from "../../features/exercisesSlice";
 
-const SearchExercises = ({setPart}) => {
+const SearchExercises = ({ exercisesData, setExercises, setSearchError }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const dispatch = useDispatch();
 
   const searchHandle = () => {
-    dispatch(fetchData(searchTerm));
-    setPart(searchTerm)
-    // console.log(searchTerm);
+    if (searchTerm) {
+      const exercisesSearched = exercisesData.filter(
+        (exercise) =>
+          exercise.name.toLowerCase().includes(searchTerm) ||
+          exercise.target.toLowerCase().includes(searchTerm) ||
+          exercise.equipment.toLowerCase().includes(searchTerm) ||
+          exercise.bodyPart.toLowerCase().includes(searchTerm)
+      );
+
+      if (exercisesSearched.length > 0) {
+        setExercises(exercisesSearched);
+        setSearchError("");
+      } else {
+        setExercises([]);
+        setSearchError(
+          "No results found. Please try a different search term i.e. 'back', 'push up', 'chest', 'shoulders', 'push up', 'cardio', ..."
+        );
+      }
+    } else {
+      // Reset exercises and error if search term is empty
+      setExercises(exercisesData);
+      setSearchError("");
+    }
   };
 
   return (
@@ -23,7 +40,7 @@ const SearchExercises = ({setPart}) => {
         // ref={inputRef}
         value={searchTerm}
         onChange={(e) => {
-          setSearchTerm(e.target.value);
+          setSearchTerm(e.target.value.toLowerCase());
         }}
       />
       <MdSearch
@@ -31,12 +48,6 @@ const SearchExercises = ({setPart}) => {
         style={{ color: "var(--orange)", cursor: "pointer" }}
         onClick={searchHandle}
       />
-      {/* {error && <div className="error-message">Invalid body part. Please try again.</div>}
-      {exercisesData.length === 0 && !error && (
-        <div className="no-results-message">No results found for '{searchTerm}'</div>
-      )} */}
-
-      
     </div>
   );
 };

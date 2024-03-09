@@ -8,17 +8,16 @@ import { fetchData } from "../../features/exercisesSlice";
 import ReactPaginate from "react-paginate";
 
 const Workouts = () => {
-  const [part, setPart] = useState("shoulders");
+  const [exercises, setExercises] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10; // Number of items to display per page
 
+  const [searchError, setSearchError] = useState(""); // handle search error
+
   const dispatch = useDispatch();
-
-  // const text = "shoulders";
-
   useEffect(() => {
-    dispatch(fetchData(part, currentPage + 1));
-  }, [dispatch, currentPage, part]);
+    dispatch(fetchData(currentPage + 1));
+  }, [dispatch, currentPage]);
 
   const { exercisesData } = useSelector(({ app }) => {
     return app;
@@ -40,31 +39,49 @@ const Workouts = () => {
       </div>
     );
   }
+  // console.log(exercisesData);
 
-  console.log(exercisesData);
+  if (searchError) {
+    return (
+      <div
+        style={{
+          color: "white",
+          fontSize: "2rem",
+          fontWeight: "bold",
+          margin: "10rem",
+          textAlign: "center",
+        }}
+      >
+        {searchError && <div className="error-message">{searchError}</div>}
+      </div>
+    );
+  }
 
-  const pageCount = Math.ceil(exercisesData.length / itemsPerPage);
-
-  const displayData = exercisesData.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage
-  );
-
-  //   let renderExercises = data.Response === "True" ? (data.exercisesData.map(({exercisesData}, index)=>(<div className="exercise-card-menu" key={index}>
-  //   <img src={data.gifUrl} alt="loading..." />
-  //   <div>
-  //     <li>Name: {exercisesData.name}</li>
-  //     <li>Traget: {exercisesData.target}</li>
-  //     <li>Equipment: {exercisesData.equipment}</li>
-  //     <li>BodyPart: {exercisesData.bodyPart}</li>
-  //   </div>
-  // </div>))) : (<div><h1>data.error</h1></div>)
+  let pageCount;
+  let displayData = [];
+  if (exercises === null) {
+    pageCount = Math.ceil(exercisesData.length / itemsPerPage);
+    displayData = exercisesData.slice(
+      currentPage * itemsPerPage,
+      (currentPage + 1) * itemsPerPage
+    );
+  } else {
+    pageCount = Math.ceil(exercises.length / itemsPerPage);
+    displayData = exercises.slice(
+      currentPage * itemsPerPage,
+      (currentPage + 1) * itemsPerPage
+    );
+  }
 
   const pageClickhandler = ({ selected }) => setCurrentPage(selected);
 
   return (
     <div className="exercise">
-      <SearchExercises setPart={setPart} part={part}/>
+      <SearchExercises
+        exercisesData={exercisesData}
+        setExercises={setExercises}
+        setSearchError={setSearchError}
+      />
       <div className="exercise-card">
         {displayData.map((data, index) => (
           <Link to={`/workouts/${data.id}`} className="link">
@@ -91,16 +108,6 @@ const Workouts = () => {
         pageRangeDisplayed={3}
         onPageChange={pageClickhandler}
         className="pagination"
-        // containerClassName={"pagination justify-content-center"}
-        // pageClassName={"page-item"}
-        // pageLinkClassName={"page-link"}
-        // previousClassName={"page-item"}
-        // previousLinkClassName={"page-link"}
-        // nextClassName={"page-item"}
-        // nextLinkClassName={"page-link"}
-        // breakClassName={"page-item"}
-        // breakLinkClassName={"page-link"}
-        // activeClassName={"active"}
       />
     </div>
   );
